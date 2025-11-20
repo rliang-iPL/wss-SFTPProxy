@@ -1,0 +1,6 @@
+@SFTPProxy_HostAddress = http://localhost:5144
+
+GET {{SFTPProxy_HostAddress}}/SFTPProxy/
+Accept: application/json
+
+###

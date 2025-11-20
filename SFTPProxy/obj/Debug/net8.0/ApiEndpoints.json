@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "SftpProxy.Controllers.SftpController",
+    "Method": "UploadJson",
+    "RelativePath": "Sftp/upload-json",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SftpProxy.Models.SftpUploadJsonRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

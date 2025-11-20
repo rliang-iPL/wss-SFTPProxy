@@ -1,0 +1,78 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "SFTPProxy",
+    "version": "1.0"
+  },
+  "paths": {
+    "/Sftp/upload-json": {
+      "post": {
+        "tags": [
+          "Sftp"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SftpUploadJsonRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SftpUploadJsonRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SftpUploadJsonRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SftpUploadJsonRequest": {
+        "type": "object",
+        "properties": {
+          "remotePath": {
+            "type": "string",
+            "nullable": true
+          },
+          "host": {
+            "type": "string",
+            "nullable": true
+          },
+          "user": {
+            "type": "string",
+            "nullable": true
+          },
+          "port": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "privateKeyString": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileBase64": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
