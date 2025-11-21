@@ -37,3 +37,5 @@ C:\Users\RoddyLiang\source\repos\SFTPProxy\SFTPProxy\obj\Debug\net8.0\refint\SFT
 C:\Users\RoddyLiang\source\repos\SFTPProxy\SFTPProxy\obj\Debug\net8.0\SFTPProxy.pdb
 C:\Users\RoddyLiang\source\repos\SFTPProxy\SFTPProxy\obj\Debug\net8.0\SFTPProxy.genruntimeconfig.cache
 C:\Users\RoddyLiang\source\repos\SFTPProxy\SFTPProxy\obj\Debug\net8.0\ref\SFTPProxy.dll
+C:\Users\RoddyLiang\source\repos\SFTPProxy\SFTPProxy\bin\Debug\net8.0\web.config
+C:\Users\RoddyLiang\source\repos\SFTPProxy\SFTPProxy\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll

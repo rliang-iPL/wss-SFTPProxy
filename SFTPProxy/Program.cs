@@ -1,5 +1,10 @@
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Limits.MaxRequestBodySize = 100_000_000; // 500 MB
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();

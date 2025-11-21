@@ -4,6 +4,7 @@ using Renci.SshNet.Common;
 using System.Text;
 using SftpProxy.Models; // import the model namespace
 using System.IO;
+using System.Security.Cryptography;
 
 namespace SftpProxy.Controllers
 {
@@ -11,6 +12,7 @@ namespace SftpProxy.Controllers
     [Route("[controller]")]
     public class SftpController : ControllerBase
     {
+        private const string EncryptedPemPath = @"C:\Sftp\id_rsa_openssh.dat";
         /// <summary>
         /// Upload a file via JSON request (file content is base64-encoded)
         /// </summary>
@@ -19,9 +21,21 @@ namespace SftpProxy.Controllers
         {
             try
             {
-                // Load OpenSSH private key from the request
-                var keyBytes = Convert.FromBase64String(request.PrivateKeyString);
-                using var keyStream = new MemoryStream(keyBytes);
+                // Load and decrypt the PEM file
+                if (!System.IO.File.Exists(EncryptedPemPath))
+                    return StatusCode(500, $"Encrypted key file not found: {EncryptedPemPath}");
+
+                byte[] encryptedBytes = System.IO.File.ReadAllBytes(EncryptedPemPath);
+                byte[] decryptedBytes = ProtectedData.Unprotect(
+                    encryptedBytes,
+                    null,
+                    DataProtectionScope.LocalMachine // or CurrentUser depending on how you encrypted
+                );
+
+                string pem = Encoding.UTF8.GetString(decryptedBytes);
+
+                // Feed PEM into SSH.NET
+                using var keyStream = new MemoryStream(Encoding.UTF8.GetBytes(pem));
                 var privateKey = new PrivateKeyFile(keyStream);
 
                 // Authentication method

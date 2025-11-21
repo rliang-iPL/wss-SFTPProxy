@@ -58,10 +58,6 @@
             "type": "integer",
             "format": "int32"
           },
-          "privateKeyString": {
-            "type": "string",
-            "nullable": true
-          },
           "fileName": {
             "type": "string",
             "nullable": true
